@@ -37,7 +37,10 @@ def html_page_context(app, pagename, templatename, context, doctree):
     context['toc'] = rendered_toc
     context['display_toc'] = True  # force toctree to display
 
-    def make_toctree(collapse=True):
+    def make_toctree(maxdepth=0, prune=False, includehidden=True,
+                     collapse=True):
+        # maxdepth, prune and includehidden arguments are ignored.
+        # There are simply here to make this tag compatible with ReadTheDocs
         return get_rendered_toctree(app.builder,
                                     pagename,
                                     prune=False,
